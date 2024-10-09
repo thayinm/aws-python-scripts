@@ -5,11 +5,13 @@ This script is intended to grab your private key from AWS Secrets Manager and sa
 ## Generate the SSH Key Pair
 
 - Run the `ssh-keygen` command in a Studio JupyterLab or Code Editor Space.
+  
   ```shell
   mkdir -p ~/.ssh
   cd ~/.ssh && ssh-keygen -o -t rsa -C "ssh@github.com"
   ```
 - Create the Secret with the AWS CLI. Note you will need the necessary IAM permissions to do so.
+  
   ```shell
   aws secretsmanager create-secret --name GithubSSHKey --secret-string "$(cat ~/.ssh/git_key)"
   ```
